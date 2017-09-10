@@ -14,7 +14,7 @@
         }
 
         .jumbotron {
-          margin-top: 10px;
+            margin-top: 10px;
         }
     </style>
 </head>
@@ -22,22 +22,30 @@
 <body>
     <div class="container">
         <%- include('partials/navbar') %>
-        <div class="jumbotron">
-            <h1>All about Node</h1>
-            <p class="lead">Check out our articles below!</p>
-        </div>
+            <div class="jumbotron">
+                <h1>All about Node</h1>
+                <p class="lead">Check out our articles below!</p>
+            </div>
 
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="list-group">
-                  <!-- loop over blog posts and render them -->
-                  LIST_OF_POSTS
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="list-group">
+                        <!-- loop over blog posts and render them -->
+                        <% posts.forEach((post) => { %>
+                            <a href="/post/<%= post.id %>" class="list-group-item">
+                                <h4 class="list-group-item-heading">
+                                    <%= post.title %>
+                                </h4>
+                                <p class="list-group-item-text">
+                                    <%= post.author %>
+                                </p>
+                            </a>
+                        <% }) %>
+                    </div>
                 </div>
             </div>
-        </div>
-        <%- include('partials/footer') %>
+            <%- include('partials/footer') %>
     </div>
 </body>
 
 </html>
-
